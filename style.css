@@ -3,7 +3,7 @@
     src: url("./fonts/Outfit-Regular.ttf");
 }
 
-body {
+html, body {
     font-family: "MyFont";
     line-height: 1.6;
     background-color: #4b3c9f;
