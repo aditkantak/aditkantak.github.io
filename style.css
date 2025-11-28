@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "MyFont";
+    src: url("./fonts/Outfit-Regular.ttf");
+}
+
+body {
+    font-family: "MyFont";
+    line-height: 1.6;
+    background-color: #4b3c9f;
+    color: #ffffff;
+}
+
+a{
+    color:#ffffff
+}
+
+.maindiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.aboutme{
+    padding: 150px 20px;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
