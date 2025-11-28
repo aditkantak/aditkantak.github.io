@@ -1,2 +1,2 @@
-# adit.github.io
+# aditkantak.github.io
 personal website (in progress)
