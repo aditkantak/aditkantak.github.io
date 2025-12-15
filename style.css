@@ -5,8 +5,8 @@
 
 html, body {
     font-family: "Helvetica";
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #e6aa68;/*#d1be9c;*/
+    color: #2f1e1e;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,7 +31,6 @@ h1{
     font-size: 4em;
     margin-bottom: 10px;
     padding-bottom: 0;
-    /* line-height: 1; */
 }
 
 .reactive{
@@ -83,6 +82,10 @@ h1{
         flex-direction: column;
         text-align: center;
     }
+
+    .aboutme{
+        max-width: 100%;
+    }
 }
 
 .navbar{
@@ -92,6 +95,21 @@ h1{
     align-items: center;
     gap: 10px;
 } 
+
+.navbar a{
+    border-left: 2px solid #000000;
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover{
+    text-decoration: underline;
+}
+
+.navbar a:first-child{
+    border-left: none;
+}
 
 .footer{
     display: flex;
