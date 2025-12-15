@@ -4,27 +4,58 @@
 }
 
 html, body {
-    font-family: "MyFont";
-    line-height: 1.6;
-    background-color: #4b3c9f;
-    color: #ffffff;
+    font-family: "Helvetica";
+    background-color: #ffffff;
+    color: #000000;
 }
 
 a{
-    color:#ffffff
+    color:#000000
+}
+
+header{
+    border-bottom: 2px solid #000000;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 0;
+}
+
+.centered{
+    text-align: center
+}
+
+h1{
+    font-size: 4em;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    /* line-height: 1; */
 }
 
 .maindiv{
-    display: flex;
-    flex-direction: row;
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: left;
 }
 
-.aboutme{
-    padding: 150px 20px;
+.headshot{
+    height: 400px;
+    width: 400px;
+
+    object-fit: cover;
+    object-position: 0% center;
+
+    border-radius: 50%;
+    border: 2px solid #000000; 
+
+    margin-top: 20px
 }
 
-.navbar{
+.navbar, .footer{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
 }
