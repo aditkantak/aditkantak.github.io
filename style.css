@@ -3,17 +3,32 @@
     src: url("./fonts/Outfit-Regular.ttf");
 }
 
+:root{
+    /* gmk cafe theme*/
+    --bgcolor: #E3E3D8;
+    --txtcolor: #453F3C;
+    --accentcolor: #855b5b;
+}
+
+.olivia{
+    /*gmk olivia*/
+    --bgcolor: #2F2F2F;
+    --txtcolor: #F7F0E5;
+    --accentcolor: #FFD1C0;
+}
+
 html, body {
     font-family: "Helvetica";
-    background-color: #e6aa68;/*#d1be9c;*/
-    color: #2f1e1e;
+    background-color: var(--bgcolor);/*#d1be9c;*/
+    color: var(--txtcolor);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
 }
 
 a{
-    color:#000000
+    color: var(--txtcolor)
 }
 
 .centered{
@@ -21,7 +36,7 @@ a{
 }
 
 header{
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid var(--accentcolor);
     margin-left: 5%;
     margin-right: 5%;
     padding-bottom: 0;
@@ -31,6 +46,12 @@ h1{
     font-size: 4em;
     margin-bottom: 10px;
     padding-bottom: 0;
+    
+    color: var(--accentcolor);
+}
+
+h2{
+    color: var(--accentcolor);
 }
 
 .reactive{
@@ -63,7 +84,7 @@ h1{
     object-position: 0% center;
 
     border-radius: 50%;
-    border: 2px solid #000000; 
+    border: 2px solid var(--accentcolor); 
 
     margin-top: 20px
 }
@@ -81,14 +102,18 @@ h1{
     .reactive{
         flex-direction: column;
         text-align: center;
+        gap: 5px
     }
 
     .aboutme{
+        line-height: 1.2;
         max-width: 100%;
     }
 }
 
 .navbar{
+    margin-top: 10px;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -97,18 +122,34 @@ h1{
 } 
 
 .navbar a{
-    border-left: 2px solid #000000;
+    border-left: 2px solid var(--accentcolor);
     padding-left: 10px;
     text-decoration: none;
     font-size: 17px;
 }
 
+.navbar p{
+    color: var(--accentcolor)
+}
+
 .navbar a:hover{
     text-decoration: underline;
+    color: var(--accentcolor);
 }
 
 .navbar a:first-child{
     border-left: none;
+}
+
+.icon{
+    width: 32;
+    height: 32;
+}
+
+.icon path,
+.icon circle {
+    fill: var(--accentcolor);
+    /* stroke: var(--accentcolor); */
 }
 
 .footer{
@@ -117,4 +158,12 @@ h1{
     justify-content: center;
     align-items: center;
     margin-top: auto;
+}
+
+#theme-switcher{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 0;
+    background-color: var(--bgcolor);
 }
