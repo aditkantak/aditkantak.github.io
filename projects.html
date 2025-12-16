@@ -9,8 +9,8 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="center">
+<body id="body">
+    <header>
         <h1>Projects</h1>
     </header>
 
@@ -21,13 +21,93 @@
         <a href="misc.html">Misc</a>
     </div>
 
-    <div class="footer centered">
+    <main>
+        <div class="project-item">
+            <a href="https://github.com/aditkantak/DiscordLM"><h2>DiscordLM (In Progress)</h2></a>
+            <p>Designing and training a mini transformer language model that would be able to mimic one's texting style from Discord chat logs. Built from scratch in Pytorch.<br>
+            Inspired by <a href="https://github.com/karpathy/nanoGPT">Karpathy's nanoGPT</a>.</p>
+            <p>Things I'm interested in finding more about:</p>
+            <ul>
+                <li>Character tokenization vs word/subword/n-gram</li>
+                <li>Vocabulary size and its effect on model speed and efficacy</li>
+                <li>Optimizing model performance given limited data</li>
+                <li>Implementing optimizations like FlashAttention and AdamW Optimizer</li>
+            </ul>
+            <p>The Future:</p>
+            <ul>
+                <li>Pivoting from training from scratch to finetuning something like Mistral 7B or Llama 3.1 on chat logs</li>
+                <li>Optimizing and abstracting away training to release as a Discord bot</li>
+            </ul>
+        </div>
+        <div class="project-item">
+            <a href="https://github.com/aditkantak/RunTune"><h2>RunTune</h2></a>
+            <p>A tool to augment running training sessions with playlists of music synced to your steps. Built in Python and React.</p>
+            <p>Things I learned:</p>
+            <ul>
+                <li>API endpoint design</li>
+                <li>Frontend/backend separation</li>
+                <li>OAuth2.0 framework for SSO integration (Spotify)</li>
+            </ul>
+            <p>Potential Future:</p>
+            <ul>
+                <li>Integration with Strava for more accurate and personalized cadence data</li>
+            </ul>
+        </div>
+        <div class="project-item">
+            <a href="https://github.com/aditkantak/Monkey-Mash"><h2>Monkey Mash!</h2></a>
+            <p>An animated top-down multiplayer sandbox shooter videogame built from scratch in Java using only standard library.<br>
+                I designed and built the networking pipeline to make the game multiplayer using a custom packet format, multithreading, and sockets.
+            </p>
+            <p>
+                Shout out to <a href="https://github.com/GKan010">Gabriel Kan</a> for building the game mechanics and to <a href="https://github.com/irizztsai">Iris Tsai</a> for drawing all the sprites and helping with animation!
+            </p>
+            <p>Things I learned:</p>
+            <ul>
+                <li>Client side and server side networking system design</li>
+                <li>Use of different internet protocols (TCP, UDP)</li>
+                <li>Using multithreading to parallelize processes</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="centered">
         <div class="navbar centered">
-            <a href="https://statsroyale.com/profile/C2P2UPR9R"><img src="assets/clash-royale-icon.png" alt="Clash Royale" width="32" height="32"></a>
-            <a href="https://github.com/aditkantak"><img src="assets/github-icon.png" alt="Github" width="32" height="32"></a>
-            <a href="https://linkedin.com/in/adit-kantak"><img src="assets/linkedin-icon.png" alt="LinkedIn" width="32" height="32"></a>
-            <a href="https://www.instagram.com/aditkantak/"><img src="assets/instagram-icon.png" alt="Instagram" width="32" height="32"></a>
+            <a href="https://statsroyale.com/profile/C2P2UPR9R">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 50 50">
+                    <path d="M 25 2 C 24.7725 2 24.544875 2.0759688 24.359375 2.2304688 L 18.638672 7 L 7 7 C 6.729 7 6.47025 7.1096875 6.28125 7.3046875 C 6.09325 7.4996875 5.9919531 7.7632031 6.0019531 8.0332031 L 7.0019531 38.033203 C 7.0139531 38.408203 7.2342187 38.744297 7.5742188 38.904297 L 24.574219 46.904297 C 24.709219 46.968297 24.854 47 25 47 C 25.146 47 25.290781 46.968297 25.425781 46.904297 L 42.425781 38.904297 C 42.765781 38.744297 42.987047 38.408203 42.998047 38.033203 L 43.998047 8.0332031 C 44.008047 7.7632031 43.90675 7.4996875 43.71875 7.3046875 C 43.52975 7.1096875 43.271 7 43 7 L 31.361328 7 L 25.640625 2.2304688 C 25.455125 2.0759687 25.2275 2 25 2 z M 25 7.6582031 C 25.215375 7.6582031 25.429375 7.7267344 25.609375 7.8652344 L 29.683594 11 L 39 11 C 39.272 11 39.533656 11.111594 39.722656 11.308594 C 39.910656 11.505594 40.010047 11.771969 39.998047 12.042969 L 38.998047 35.597656 C 38.982047 35.974656 38.757063 36.308844 38.414062 36.464844 L 25.414062 42.376953 C 25.282062 42.436953 25.142 42.466797 25 42.466797 C 24.858 42.466797 24.717938 42.436953 24.585938 42.376953 L 11.585938 36.464844 C 11.242938 36.308844 11.017953 35.974656 11.001953 35.597656 L 10.001953 12.042969 C 9.9899531 11.771969 10.089344 11.505594 10.277344 11.308594 C 10.466344 11.111594 10.728 11 11 11 L 20.316406 11 L 24.388672 7.8652344 C 24.568172 7.7267344 24.784625 7.6582031 25 7.6582031 z M 25 9.9199219 L 21.267578 12.792969 C 21.092578 12.927969 20.87725 13 20.65625 13 L 12.042969 13 L 12.972656 34.898438 L 25 40.367188 L 37.027344 34.898438 L 37.957031 13 L 29.34375 13 C 29.12275 13 28.907422 12.927969 28.732422 12.792969 L 25 9.9199219 z M 23 17 L 27 17 C 27.459 17 27.858703 17.312812 27.970703 17.757812 L 28.78125 21 L 30.279297 21 L 31.052734 18.683594 C 31.188734 18.274594 31.569 18 32 18 L 34 18 C 34.281 18 34.549281 18.117219 34.738281 18.324219 C 34.927281 18.532219 35.021094 18.810797 34.996094 19.091797 L 33.996094 30.091797 C 33.949094 30.605797 33.518 31 33 31 L 17 31 C 16.482 31 16.050906 30.605797 16.003906 30.091797 L 15.003906 19.091797 C 14.978906 18.811797 15.071719 18.532219 15.261719 18.324219 C 15.450719 18.117219 15.719 18 16 18 L 18 18 C 18.431 18 18.812266 18.274594 18.947266 18.683594 L 19.720703 21 L 21.21875 21 L 22.03125 17.757812 C 22.14225 17.312812 22.541 17 23 17 z M 23.78125 19 L 22.96875 22.242188 C 22.85775 22.688187 22.459 23 22 23 L 19 23 C 18.569 23 18.187734 22.725406 18.052734 22.316406 L 17.279297 20 L 17.09375 20 L 17.548828 25 L 32.449219 25 L 32.904297 20 L 32.720703 20 L 31.947266 22.316406 C 31.812266 22.725406 31.431 23 31 23 L 28 23 C 27.541 23 27.141297 22.688188 27.029297 22.242188 L 26.21875 19 L 23.78125 19 z M 17.730469 27 L 17.912109 29 L 32.087891 29 L 32.269531 27 L 17.730469 27 z"></path>
+                </svg>
+            </a>
+            <a href="https://github.com/aditkantak">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 30 30">
+                    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
+                </svg>
+            </a>
+            <a href="https://linkedin.com/in/adit-kantak">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 50 50">
+                    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/aditkantak/">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 30 30">
+                    <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"></path>
+                </svg>
+            </a>
         </div>
         <p>&copy; Adit Kantak. All rights reserved.</p>
+    </footer>
+    <div>
+        <button id="theme-switcher" title="Toggle theme">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50" version="1.1"><path d="" stroke="none" fill="#080404" fill-rule="evenodd"/>
+                <path d="M 1 9 L 1 17 22.500 17 L 44 17 44 9 L 44 1 22.500 1 L 1 1 1 9 M 45 13.400 L 45 18.799 37.750 20.388 C 33.763 21.261, 28.702 22.339, 26.505 22.782 C 23.853 23.317, 22.394 24.193, 22.163 25.390 C 21.878 26.873, 22.232 27.057, 24.158 26.428 C 25.446 26.008, 31 24.695, 36.500 23.510 L 46.500 21.358 46.796 14.679 C 46.980 10.510, 46.698 8, 46.046 8 C 45.447 8, 45 10.309, 45 13.400 M 18 39 L 18 49 23 49 L 28 49 28 39 L 28 29 23 29 L 18 29 18 39" stroke="none" fill="#040404" fill-rule="evenodd"/>
+            </svg>
+        </button>
     </div>
+
+    <script>
+        document.getElementById("theme-switcher").addEventListener("click", () => {
+            document.getElementById("body").classList.toggle("olivia");
+            console.log(document.getElementById("body").classList);
+        });
+    </script>
 </body>
+</html>

@@ -4,23 +4,29 @@
 }
 
 :root{
-    /* gmk cafe theme*/
+    /* gmk cafe inspired*/
     --bgcolor: #E3E3D8;
     --txtcolor: #453F3C;
     --accentcolor: #855b5b;
 }
 
 .olivia{
-    /*gmk olivia*/
+    /*gmk olivia inspired*/
     --bgcolor: #2F2F2F;
     --txtcolor: #F7F0E5;
     --accentcolor: #FFD1C0;
 }
 
-html, body {
+html{
     font-family: "Helvetica";
-    background-color: var(--bgcolor);/*#d1be9c;*/
+    background-color: var(--bgcolor);
     color: var(--txtcolor);
+}
+
+body {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -29,6 +35,24 @@ html, body {
 
 a{
     color: var(--txtcolor)
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.project-item a{
+    color: var(--accentcolor);
+    text-decoration: none;
+}
+
+.project-item a:hover{
+    text-decoration: underline;
+    color: var(--accentcolor);
+}
+
+.project-item li{
+    color: var(--txtcolor);
 }
 
 .centered{
@@ -46,27 +70,35 @@ h1{
     font-size: 4em;
     margin-bottom: 10px;
     padding-bottom: 0;
-    
+}
+
+h4{
+    margin-top: 0;
+}
+
+h1, h2, h3, h4{
     color: var(--accentcolor);
 }
 
-h2{
-    color: var(--accentcolor);
-}
-
-.reactive{
+main{
     margin: 0 auto;
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
 
+    max-width: 95%;
+
+    flex-grow: 1;
+}
+
+.reactive{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 20px;
 
-    max-width: 95%;
+    /* max-width: 95%; */
 }
 
 .aboutme{
@@ -87,28 +119,6 @@ h2{
     border: 2px solid var(--accentcolor); 
 
     margin-top: 20px
-}
-
-@media (max-width: 768px){ /*for mobile*/
-    h1{
-        font-size: 2em;
-    }
-
-    .headshot{
-        height: 50vw;
-        width: 50vw;
-    }
-
-    .reactive{
-        flex-direction: column;
-        text-align: center;
-        gap: 5px
-    }
-
-    .aboutme{
-        line-height: 1.2;
-        max-width: 100%;
-    }
 }
 
 .navbar{
@@ -152,7 +162,7 @@ h2{
     /* stroke: var(--accentcolor); */
 }
 
-.footer{
+footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,5 +175,31 @@ h2{
     bottom: 20px;
     right: 20px;
     border: 0;
-    background-color: var(--bgcolor);
+    background-color: transparent;
+}
+
+@media (max-width: 768px){ /*for mobile*/
+    h1{
+        font-size: 3em;
+    }
+
+    .headshot{
+        height: 50vw;
+        width: 50vw;
+    }
+
+    .reactive{
+        flex-direction: column;
+        text-align: center;
+        gap: 5px
+    }
+
+    .aboutme{
+        line-height: 1.2;
+        max-width: 100%;
+    }
+
+    .navbar a{
+        font-size: 15px;
+    }
 }
