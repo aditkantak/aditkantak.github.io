@@ -1,6 +1,16 @@
 @font-face {
-    font-family: "MyFont";
-    src: url("./fonts/Outfit-Regular.ttf");
+    font-family: "HelveticaNeueRegular";
+    src: url("./fonts/HelveticaNeue-01.ttf");
+}
+
+@font-face{
+    font-family: "HelveticaNeueMedium";
+    src: url("./fonts/HelveticaNeue-Medium-11.ttf");
+}
+
+@font-face{
+    font-family: "HelveticaNeueBold";
+    src: url("./fonts/HelveticaNeue-Bold-02.ttf");
 }
 
 :root{
@@ -18,7 +28,7 @@
 }
 
 html{
-    font-family: "Helvetica";
+    font-family: "HelveticaNeueRegular", Helvetica;
     background-color: var(--bgcolor);
     color: var(--txtcolor);
 }
@@ -34,10 +44,11 @@ body {
 }
 
 a{
-    color: var(--txtcolor)
+    color: var(--accentcolor)
 }
 
 a:hover{
+    color: var(--txtcolor);
     text-decoration: underline;
 }
 
@@ -72,12 +83,18 @@ h1{
     padding-bottom: 0;
 }
 
+h2{
+    font-size: 2em;
+}
+
 h4{
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 h1, h2, h3, h4{
     color: var(--accentcolor);
+    font-family: "HelveticaNeueMedium", Helvetica;
 }
 
 main{
