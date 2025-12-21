@@ -111,6 +111,8 @@ img_data = [
     }
 ]
 
+num_images = 6;
+
 function get_x_randoms(x, max){
     //gets set of x random numbers from 0 to max
     let rand_set = new Set();
@@ -120,21 +122,30 @@ function get_x_randoms(x, max){
     return rand_set;
 }
 
-function shuffle_images(image_grid){
-    let indices = [...get_x_randoms(5, img_data.length)];
-    const randomPhotos = indices.map((i) => {return img_data[i]});
-    
-    console.log(randomPhotos);
+function build_images(img_indices){
+    //builds image from array of int indices
+    console.log(typeof img_indices);
 
-    for (const entry of randomPhotos){
-        //change up photos
+    const imgs = img_indices.map((i) => {return img_data[i]});
+
+    for (let i = 0; i < num_images; i++){
+        document.getElementById(`gallery-image${i+1}`).setAttribute("src", imgs[i]["filepath"]);
+        document.getElementById(`gallery-caption${i+1}`).innerHTML = `${imgs[i]["subject"]}`;
+        document.getElementById(`gallery-location${i+1}`).innerHTML = `${imgs[i]["location"]}`;
     }
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const last_date = window.localStorage.getItem("lastDate");
+    const last_photos = window.localStorage.getItem("imgIndices");
+
     const current_date = new Date().toLocaleDateString("sv-SE");
-    // if (current_date > last_date){
-        shuffle_images(document.getElementById("gallery-grid"));
-    // }
+
+    if (current_date > last_date || last_date == null || last_photos == null){
+        window.localStorage.setItem("lastDate", new Date().toLocaleDateString('sv-SE'));
+        window.localStorage.setItem("imgIndices", [...get_x_randoms(num_images, img_data.length)]);
+    }
+
+    const indices = window.localStorage.getItem("imgIndices").split(",").map((item) => parseInt(item, 10));
+    build_images(indices);
 });

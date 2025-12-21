@@ -7,11 +7,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     else if (theme == "olivia"){
         document.body.classList.add("olivia");
     }
-
-    //set date for gallery
-    if (window.localStorage.getItem("lastDate") == null){
-        window.localStorage.setItem("lastDate", new Date().toLocaleDateString('sv-SE'));
-    }
 });
 
 document.getElementById("theme-switcher").addEventListener("click", () => {

@@ -87,6 +87,10 @@ h2{
     font-size: 2em;
 }
 
+h3{
+    font-size: 1.5em;
+}
+
 h4{
     margin-top: 0;
     margin-bottom: 0;
@@ -114,8 +118,6 @@ main{
     align-items: center;
     justify-content: center;
     gap: 20px;
-
-    /* max-width: 95%; */
 }
 
 .aboutme{
@@ -176,7 +178,6 @@ main{
 .icon path,
 .icon circle {
     fill: var(--accentcolor);
-    /* stroke: var(--accentcolor); */
 }
 
 footer{
@@ -195,7 +196,46 @@ footer{
     background-color: transparent;
 }
 
-@media (max-width: 768px){ /*for mobile*/
+.gallery-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, auto);
+    
+    gap: 20px;
+    padding: 20px;
+    
+    max-width: 100%;
+
+    margin: 0 auto;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+}
+
+.photo-card h3{
+    padding: 0;
+    margin-top: 0.5vh;
+    margin-bottom: 0.25vh;
+}
+
+.photo-card p{
+    padding: 0;
+    margin-top: 0.25vh;
+    margin-bottom: 0.25vh;
+}
+
+@media (max-aspect-ratio: 1/1){ /*for ipad type displays*/
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-aspect-ratio: 3/4){ /*for mobile*/
     h1{
         font-size: 3em;
     }
@@ -218,5 +258,11 @@ footer{
 
     .navbar a{
         font-size: 15px;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, auto);
+        gap: 15px;
     }
 }
