@@ -23,8 +23,19 @@
     </div>
 
     <main>
-        <h2>What I'm Learning About</h2>
-        <ul></ul>
+        <h2>Cool Papers I've Read Recently</h2>
+        <ul>
+            <li>
+                <h4>Scaling Latent Reasoning via Looped Language Models | <a target="_blank" href="https://arxiv.org/abs/2510.25741">Arxiv</a></h4>
+                This paper proposes looped transformers, which can essentially reason in latent space by looping the latent representation of the output (before the LM head) back into the model as input until it's confident of its answer. This is implemented by adding an "exit gate" output alongside the LM head, which is a dense layer with sigmoid activation, representing the model's "confidence" that it doesn't need to reason anymore. If the exit gate's value is lower than a threshold, the latent representation right before the LM head is looped back into the model to reason further, and if the exit gate's value is above a threshold, the output comes out through the LM head as an output token.
+            </li>
+            <li>
+                <h4>Forking Paths in Neural Text Generation | <a target="_blank" href="https://arxiv.org/abs/2412.07961">Arxiv</a></h4>
+                This paper investigates "forking" positions in LLM generation, which are positions in which the generation can go in different directions based on which token the model samples from the final softmax probabilities. The paper finds that there are many such positions in generated text, and some can be more unexpected than others, even appearing in spaces and punctuation.
+            </li>
+        </ul>
+        <h2>More Coming Soon...</h2>
+        
     </main>
 
     <footer class="centered">
