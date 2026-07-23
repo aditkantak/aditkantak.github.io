@@ -66,6 +66,19 @@ a:hover{
     color: var(--txtcolor);
 }
 
+.paper-list li{
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.paper-list li:last-child{
+    margin-bottom: 0;
+}
+
+.paper-list h4{
+    margin-bottom: 6px;
+}
+
 .centered{
     text-align: center
 }

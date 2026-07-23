@@ -24,7 +24,15 @@
 
     <main>
         <h2>Cool Papers Of Late</h2>
-        <ul>
+        <ul class="paper-list">
+            <li>
+                <h4>Unmasking On-Policy Distillation: Where It Helps, Where It Hurts, and Why | <a target="_blank" href="http://arxiv.org/abs/2605.10889">Arxiv</a></h4>
+                This paper proposes a new framework to evaluate OPD methods before training time. The method effectively compares cosine similarity between the gradients of OPD methods versus an "oracle" gradient to gather insight about the direction of updates. They find that the gradients best align on incorrect rollouts from the student, and that different model sizes show different preferences for external teacher models versus self-distillation.
+            </li>
+            <li>
+                <h4>Which Tokens Matter? Adaptive Token Selection for RLVR with the Relative Surprisal Index | <a target="_blank" href="https://arxiv.org/abs/2606.31575">Arxiv</a></h4>
+                This paper proposes the Relative Surprisal Index (RSI), which quantifies and contextualizes how surprising a token is to a model at a given position. This index resolves the clash between two trains of thought, with one being to prioritize high entropy tokens for RLVR, and the other being to avoid low probability tokens in RLVR. RSI bridges this gap by accounting for both probability and entropy. The paper finds that asymmetrically RSI-gated GRPO outperforms base GRPO, and further ablations show that RSI gating is more beneficial than naive entropy/probability gating.
+            </li>
             <li>
                 <h4>Scaling Latent Reasoning via Looped Language Models | <a target="_blank" href="https://arxiv.org/abs/2510.25741">Arxiv</a></h4>
                 This paper proposes looped transformers, which can essentially reason in latent space by looping the latent representation of the output (before the LM head) back into the model as input until it's confident of its answer. This is implemented by adding an "exit gate" output alongside the LM head, which is a dense layer with sigmoid activation, representing the model's "confidence" that it doesn't need to reason anymore. If the exit gate's value is lower than a threshold, the latent representation right before the LM head is looped back into the model to reason further, and if the exit gate's value is above a threshold, the output comes out through the LM head as an output token.
