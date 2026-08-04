@@ -1,0 +1,386 @@
+/* declared on body, not :root: .olivia (dark theme) is toggled on body by
+   script.js, and var() inside a custom property resolves using the values
+   active at the element where it's declared - putting these on :root would
+   freeze them to the light theme regardless of which theme is active */
+body {
+    --blog-panel: color-mix(in srgb, var(--txtcolor) 6%, var(--bgcolor));
+    --blog-hairline: color-mix(in srgb, var(--txtcolor) 16%, var(--bgcolor));
+    --blog-muted: color-mix(in srgb, var(--txtcolor) 62%, var(--bgcolor));
+
+    /* syntax palette - a companion light/dark pair (One Light / One Dark
+       family), chosen for legibility rather than to match the site accent */
+    --syn-keyword: #3B6EA5;
+    --syn-type: #2A7F7F;
+    --syn-string: #4B8B3B;
+    --syn-number: #B5651D;
+    --syn-function: #9C6B1F;
+}
+
+.olivia {
+    --syn-keyword: #7C9CDE;
+    --syn-type: #56B6C2;
+    --syn-string: #98C379;
+    --syn-number: #D19A66;
+    --syn-function: #E5C07B;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* reading measure, blog pages only - posts stay narrow for prose, but the
+   index (a list of cards, not prose) gets more room and scales with the
+   viewport instead of sitting at a fixed narrow width */
+main {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main.blog-index {
+    max-width: min(90%, 2500px);
+}
+
+.post-meta {
+    margin-top: 6px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.8em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blog-muted);
+}
+
+.post-meta i {
+    font-style: normal;
+}
+
+/* ---- blog index ---- */
+
+.paper-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.paper-list li {
+    padding: 24px 20px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--blog-hairline);
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.paper-list li:first-child {
+    border-top: none;
+}
+
+.paper-list li:hover {
+    position: relative;
+    z-index: 1;
+    background-color: var(--blog-panel);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--txtcolor) 18%, transparent);
+}
+
+.paper-list h4 {
+    font-size: 1.4em;
+}
+
+.post-description {
+    margin-top: 4px;
+    margin-bottom: 0;
+    color: var(--blog-muted);
+}
+
+/* ---- post prose ----
+   direct-child combinators keep these rules from leaking into the
+   .paper-list index above, which lives one level deeper (main > ul > li > h4) */
+
+main > h1,
+main > h2,
+main > h3,
+main > h4,
+main > h5,
+main > h6 {
+    margin-top: 1.4em;
+    margin-bottom: 0.5em;
+}
+
+main > h1 { font-size: 1.75em; }
+main > h2 { font-size: 1.5em; }
+main > h3 { font-size: 1.25em; }
+main > h4 { font-size: 1.1em; }
+
+main > h5,
+main > h6 {
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+main > p,
+main > ul:not(.paper-list),
+main > ol {
+    line-height: 1.7;
+}
+
+main > ul:not(.paper-list),
+main > ol {
+    padding-left: 1.4em;
+}
+
+main > ul:not(.paper-list) li,
+main > ol li {
+    margin-bottom: 0.4em;
+}
+
+main > blockquote {
+    margin: 1.2em 0;
+    padding: 0.2em 0 0.2em 1em;
+    border-left: 3px solid var(--accentcolor);
+    color: var(--blog-muted);
+    font-style: italic;
+}
+
+main > blockquote p {
+    margin: 0.4em 0;
+}
+
+main > hr {
+    border: none;
+    border-top: 1px solid var(--blog-hairline);
+    margin: 2em 0;
+}
+
+/* MathJax output - long equations scroll within their own box instead of
+   overflowing the page. Display type is left to MathJax's own stylesheet
+   (inline vs centered block) so inline equations still flow with text. */
+main mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* inline code */
+main code {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.875em;
+    background-color: var(--blog-panel);
+    padding: 0.15em 0.4em;
+}
+
+/* fenced code blocks (kramdown + rouge) - the toolbar is a header row
+   above the code rather than an overlay on top of it, so it can never
+   cover a long line; the gutter and the scrolling code are separate flex
+   children so line numbers stay put while long lines scroll underneath */
+main div.highlighter-rouge {
+    display: flex;
+    flex-direction: column;
+    margin: 1.2em 0;
+    border: 1px solid var(--blog-hairline);
+    background-color: var(--blog-panel);
+}
+
+.code-body {
+    display: flex;
+    align-items: stretch;
+}
+
+.code-body .highlight {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+main div.highlighter-rouge pre.highlight {
+    margin: 0;
+    padding: 1em;
+}
+
+main div.highlighter-rouge code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.85em;
+    line-height: 1.6;
+    tab-size: 4;
+    -moz-tab-size: 4;
+}
+
+/* line-number gutter, injected by the script in default.html */
+.code-line-numbers {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0.75em 1em 1em;
+    border-right: 1px solid var(--blog-hairline);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: var(--blog-muted);
+    text-align: right;
+    user-select: none;
+}
+
+/* toolbar (language label + copy button) - a header row above the code,
+   not an overlay, so it never covers long lines */
+.code-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    border-bottom: 1px solid var(--blog-hairline);
+    min-height: 2em;
+}
+
+.code-lang-label {
+    display: flex;
+    align-items: center;
+    padding: 0 0.8em;
+    font-family: "HelveticaNeueMedium", Helvetica;
+    font-size: 0.75em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--blog-muted);
+    user-select: none;
+}
+
+.code-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2em;
+    padding: 0;
+    color: var(--blog-muted);
+    background: none;
+    border: none;
+    border-left: 1px solid var(--blog-hairline);
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.code-copy-btn:hover {
+    color: var(--accentcolor);
+}
+
+.code-copy-btn.copied {
+    color: var(--syn-string);
+}
+
+.code-copy-btn .icon-check {
+    display: none;
+}
+
+.code-copy-btn.copied .icon-copy {
+    display: none;
+}
+
+.code-copy-btn.copied .icon-check {
+    display: block;
+}
+
+.code-copy-btn:focus-visible {
+    outline: 2px solid var(--accentcolor);
+    outline-offset: -2px;
+}
+
+/* syntax highlighting - keyword / type / string / number / function,
+   everything else stays plain body text to keep the block calm */
+main div.highlighter-rouge .k,
+main div.highlighter-rouge .kd,
+main div.highlighter-rouge .kn,
+main div.highlighter-rouge .kp,
+main div.highlighter-rouge .kr,
+main div.highlighter-rouge .ow {
+    color: var(--syn-keyword);
+}
+
+main div.highlighter-rouge .kt,
+main div.highlighter-rouge .nc,
+main div.highlighter-rouge .nn {
+    color: var(--syn-type);
+}
+
+main div.highlighter-rouge .s,
+main div.highlighter-rouge .s1,
+main div.highlighter-rouge .s2,
+main div.highlighter-rouge .sb,
+main div.highlighter-rouge .sc,
+main div.highlighter-rouge .sd,
+main div.highlighter-rouge .se,
+main div.highlighter-rouge .sh,
+main div.highlighter-rouge .si,
+main div.highlighter-rouge .sx,
+main div.highlighter-rouge .sr,
+main div.highlighter-rouge .ss {
+    color: var(--syn-string);
+}
+
+main div.highlighter-rouge .m,
+main div.highlighter-rouge .mi,
+main div.highlighter-rouge .mf,
+main div.highlighter-rouge .mo,
+main div.highlighter-rouge .mh,
+main div.highlighter-rouge .il {
+    color: var(--syn-number);
+}
+
+main div.highlighter-rouge .nf,
+main div.highlighter-rouge .nb,
+main div.highlighter-rouge .nd {
+    color: var(--syn-function);
+}
+
+main div.highlighter-rouge .c,
+main div.highlighter-rouge .c1,
+main div.highlighter-rouge .cm,
+main div.highlighter-rouge .cp,
+main div.highlighter-rouge .cs {
+    color: var(--blog-muted);
+    font-style: italic;
+}
+
+/* tables */
+main > table {
+    width: 100%;
+    margin: 1.2em 0;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+main > table th,
+main > table td {
+    padding: 0.5em 0.75em;
+    border: 1px solid var(--blog-hairline);
+    text-align: left;
+}
+
+main > table th {
+    font-family: "HelveticaNeueMedium", Helvetica;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.03em;
+}
+
+main > table tbody tr:nth-child(even) {
+    background-color: var(--blog-panel);
+}
+
+main a:focus-visible,
+.paper-list a:focus-visible {
+    outline: 2px solid var(--accentcolor);
+    outline-offset: 2px;
+}
+
+@media (max-aspect-ratio: 3/4) {
+    main {
+        max-width: 100%;
+    }
+
+    main div.highlighter-rouge code {
+        font-size: 0.8em;
+    }
+
+    .code-line-numbers {
+        font-size: 0.8em;
+        padding: 1em 0.5em 1em 0.75em;
+    }
+}

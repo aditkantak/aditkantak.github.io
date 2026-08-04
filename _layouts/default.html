@@ -7,12 +7,25 @@
 
     <title>{{ page.title }}</title>
 
-    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="{{ '/blog_style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+
+    {% if page.math %}
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {% endif %}
 </head>
 <body id="body">
     <header>
         <h1>{{ page.title }}</h1>
-        {% if page.date %}<p><i>{{ page.date | date: "%B %-d, %Y" }}</i></p>{% endif %}
+        {% if page.date %}<p class="post-meta"><i>{{ page.date | date: "%B %-d, %Y" }}</i></p>{% endif %}
     </header>
 
     <div class="navbar centered">
@@ -24,7 +37,7 @@
         <a href="{{ '/misc.html' | relative_url }}">Misc</a>
     </div>
 
-    <main>
+    <main{% if page.url == "/blog.html" %} class="blog-index"{% endif %}>
         {{ content }}
     </main>
 
@@ -62,5 +75,62 @@
     </div>
 
     <script src="{{ '/script.js' | relative_url }}"></script>
+    <script>
+        document.querySelectorAll('main div.highlighter-rouge').forEach(function (block) {
+            var code = block.querySelector('code');
+            var highlightDiv = block.querySelector('.highlight');
+            if (!code || !highlightDiv) return;
+
+            // body row: line numbers + the scrolling code, sitting below
+            // the toolbar rather than under it, so the toolbar never
+            // overlaps code text regardless of line length
+            var body = document.createElement('div');
+            body.className = 'code-body';
+            block.insertBefore(body, highlightDiv);
+
+            var lineCount = code.textContent.replace(/\n$/, '').split('\n').length;
+            var gutter = document.createElement('div');
+            gutter.className = 'code-line-numbers';
+            for (var i = 1; i <= lineCount; i++) {
+                var line = document.createElement('span');
+                line.textContent = i;
+                gutter.appendChild(line);
+            }
+            body.appendChild(gutter);
+            body.appendChild(highlightDiv);
+
+            var toolbar = document.createElement('div');
+            toolbar.className = 'code-toolbar';
+
+            var langMatch = block.className.match(/language-(\S+)/);
+            if (langMatch) {
+                var label = document.createElement('span');
+                label.className = 'code-lang-label';
+                label.textContent = langMatch[1];
+                toolbar.appendChild(label);
+            }
+
+            var copyBtn = document.createElement('button');
+            copyBtn.type = 'button';
+            copyBtn.className = 'code-copy-btn';
+            copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+            copyBtn.title = 'Copy code';
+            copyBtn.innerHTML =
+                '<svg class="icon-copy" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>' +
+                '<svg class="icon-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            copyBtn.addEventListener('click', function () {
+                if (!navigator.clipboard) return;
+                navigator.clipboard.writeText(code.textContent).then(function () {
+                    copyBtn.classList.add('copied');
+                    setTimeout(function () {
+                        copyBtn.classList.remove('copied');
+                    }, 1500);
+                });
+            });
+            toolbar.appendChild(copyBtn);
+
+            block.insertBefore(toolbar, body);
+        });
+    </script>
 </body>
 </html>

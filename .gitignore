@@ -1,2 +1,6 @@
 _site/
 .jekyll-cache/
+.obsidian/
+_templates/
+publish_blog
+.DS_Store
