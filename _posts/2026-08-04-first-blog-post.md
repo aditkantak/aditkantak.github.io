@@ -1,6 +1,7 @@
 ---
 layout: default
 title: First Blog Post
+description: "testing out the formatter."
 date: 2026-08-04
 ---
 # Testing out Blog Post (Title)
@@ -13,6 +14,7 @@ regular text *italics text* **bold text**
 - unordered list 2
 1. ol 1
 2. ol 2
+
 ```python
 print("this is a python code block")
 os.delete(~)

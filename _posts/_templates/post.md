@@ -1,9 +1,10 @@
 <%*
-const response = await tp.system.prompt("Post title", "", true);
+const title = await tp.system.prompt("Post title", "", true);
+const description = await tp.system.prompt("One-line description", "", true);
 
 const dateStr = tp.date.now("YYYY-MM-DD");
 
-let slug = response
+let slug = title
   .toLowerCase()
   .trim()
   .replace(/[^a-z0-9]+/g, "-")
@@ -18,11 +19,13 @@ while (await tp.file.exists(newName + ".md")) {
 }
 await tp.file.rename(newName);
 
-const safeTitle = response.replace(/"/g, '\\"');
+const safeTitle = title.replace(/"/g, '\\"');
+const safeDescription = description.replace(/"/g, '\\"');
 -%>
 ---
 layout: default
 title: "<% safeTitle %>"
+description: "<% safeDescription %>"
 date: <% dateStr %>
 ---
 
