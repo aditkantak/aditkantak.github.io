@@ -4,47 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Research</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>{{ page.title }}</title>
+
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 </head>
 <body id="body">
     <header>
-        <h1>Research Related Things</h1>
+        <h1>{{ page.title }}</h1>
+        {% if page.date %}<p><i>{{ page.date | date: "%B %-d, %Y" }}</i></p>{% endif %}
     </header>
 
     <div class="navbar centered">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="projects.html">Projects</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="blog.html">Blog</a>
-        <a href="misc.html">Misc</a>
+        <a href="{{ '/index.html' | relative_url }}">Home</a>
+        <a href="{{ '/research.html' | relative_url }}">Research</a>
+        <a href="{{ '/projects.html' | relative_url }}">Projects</a>
+        <a href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/misc.html' | relative_url }}">Misc</a>
     </div>
 
     <main>
-        <h2>Cool Papers Of Late</h2>
-        <ul class="paper-list">
-            <li>
-                <h4>Unmasking On-Policy Distillation: Where It Helps, Where It Hurts, and Why | <a target="_blank" href="http://arxiv.org/abs/2605.10889">Arxiv</a></h4>
-                This paper proposes a new framework to evaluate OPD methods before training time. The method effectively compares cosine similarity between the gradients of OPD methods versus an "oracle" gradient to gather insight about the direction of updates. They find that the gradients best align on incorrect rollouts from the student, and that different model sizes show different preferences for external teacher models versus self-distillation.
-            </li>
-            <li>
-                <h4>Which Tokens Matter? Adaptive Token Selection for RLVR with the Relative Surprisal Index | <a target="_blank" href="https://arxiv.org/abs/2606.31575">Arxiv</a></h4>
-                This paper proposes the Relative Surprisal Index (RSI), which quantifies and contextualizes how surprising a token is to a model at a given position. This index resolves the clash between two trains of thought, with one being to prioritize high entropy tokens for RLVR, and the other being to avoid low probability tokens in RLVR. RSI bridges this gap by accounting for both probability and entropy. The paper finds that asymmetrically RSI-gated GRPO outperforms base GRPO, and further ablations show that RSI gating is more beneficial than naive entropy/probability gating.
-            </li>
-            <li>
-                <h4>Scaling Latent Reasoning via Looped Language Models | <a target="_blank" href="https://arxiv.org/abs/2510.25741">Arxiv</a></h4>
-                This paper proposes looped transformers, which can essentially reason in latent space by looping the latent representation of the output (before the LM head) back into the model as input until it's confident of its answer. This is implemented by adding an "exit gate" output alongside the LM head, which is a dense layer with sigmoid activation, representing the model's "confidence" that it doesn't need to reason anymore. If the exit gate's value is lower than a threshold, the latent representation right before the LM head is looped back into the model to reason further, and if the exit gate's value is above a threshold, the output comes out through the LM head as an output token.
-            </li>
-            <li>
-                <h4>Forking Paths in Neural Text Generation | <a target="_blank" href="https://arxiv.org/abs/2412.07961">Arxiv</a></h4>
-                This paper investigates "forking" positions in LLM generation, which are positions in which the generation can go in different directions based on which token the model samples from the final softmax probabilities. The paper finds that there are many such positions in generated text, and some can be more unexpected than others, even appearing in spaces and punctuation.
-            </li>
-        </ul>
-        <h2>More Coming Soon...</h2>
-        
+        {{ content }}
     </main>
 
     <footer class="centered">
@@ -80,6 +61,6 @@
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ '/script.js' | relative_url }}"></script>
 </body>
 </html>
