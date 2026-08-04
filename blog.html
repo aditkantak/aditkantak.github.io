@@ -6,8 +6,7 @@ title: Blog
     {% for post in site.posts %}
     <li>
         <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-        <p class="post-date"><i>{{ post.date | date: "%B %-d, %Y" }}</i></p>
-        {{ post.excerpt }}
+        <p>{{ post.description }}</p>
     </li>
     {% else %}
     <li>No posts yet. Check back soon.</li>
