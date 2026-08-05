@@ -38,7 +38,7 @@
     </div>
 
     <main{% if page.url == "/blog.html" %} class="blog-index"{% endif %}>
-        {{ content }}
+        {{ content | replace: "_blog_assets/", "/assets/blog/" }}
     </main>
 
     <footer class="centered">

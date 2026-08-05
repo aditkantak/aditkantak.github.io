@@ -32,15 +32,22 @@ body {
 
 /* reading measure, blog pages only - posts stay narrow for prose, but the
    index (a list of cards, not prose) gets more room and scales with the
-   viewport instead of sitting at a fixed narrow width */
+   viewport instead of sitting at a fixed narrow width.
+   width: 100% is required here, not just max-width: body is a column flex
+   container, and a flex item with auto cross-axis margins (needed to
+   center it) does NOT stretch to fill available width by default - auto
+   margins override align-items: stretch per spec, so without an explicit
+   width the item just shrinks to fit its content instead of growing up
+   to max-width. */
 main {
+    width: 100%;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
 main.blog-index {
-    max-width: min(90%, 2500px);
+    max-width: min(90%, 1000px);
 }
 
 .post-meta {
@@ -56,6 +63,26 @@ main.blog-index {
     font-style: normal;
 }
 
+.tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-left: 0;
+    margin: 8px 0 0;
+}
+
+.tag-list .tag {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.02em;
+    padding: 0.15em 0.5em;
+    border: 1px solid var(--blog-hairline);
+    border-radius: 999px;
+    color: var(--blog-muted);
+    background-color: var(--blog-panel);
+}
+
 /* ---- blog index ---- */
 
 .paper-list {
@@ -64,6 +91,7 @@ main.blog-index {
 }
 
 .paper-list li {
+    position: relative;
     padding: 24px 20px;
     margin-bottom: 0;
     border-top: 1px solid var(--blog-hairline);
@@ -75,15 +103,30 @@ main.blog-index {
 }
 
 .paper-list li:hover {
-    position: relative;
     z-index: 1;
     background-color: var(--blog-panel);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--txtcolor) 18%, transparent);
 }
 
 .paper-list h4 {
     font-size: 1.4em;
+}
+
+.paper-list h4 a {
+    text-decoration: none;
+}
+
+.paper-list h4 a:hover {
+    text-decoration: none;
+}
+
+/* stretched-link: the title link's hit area covers the whole card, so the
+   entire box is clickable while staying a single anchor element - no
+   nested <a> wrapping the tags/description, which interactive elements
+   like the tag list wouldn't allow */
+.paper-list h4 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
 }
 
 .post-description {
@@ -150,6 +193,11 @@ main > hr {
     border: none;
     border-top: 1px solid var(--blog-hairline);
     margin: 2em 0;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* MathJax output - long equations scroll within their own box instead of
