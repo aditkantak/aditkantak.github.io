@@ -4,9 +4,12 @@ const description = await tp.system.prompt("One-line description", "", true);
 const hasMath = await tp.system.suggester(["No", "Yes"], [false, true], true, "Does this post use math (MathJax)?");
 
 // build the tag list from every tag already used across existing posts, so
-// picking a tag is a select-from-list action rather than retyping it
+// picking a tag is a select-from-list action rather than retyping it.
+// note: _posts/ is the vault root (.obsidian lives directly inside it), so
+// post files show up here with vault-relative paths like "2026-...-title.md",
+// never prefixed with "_posts/" - only _templates/ needs excluding.
 const postFiles = app.vault.getMarkdownFiles().filter(f =>
-  f.path.startsWith("_posts/") && !f.path.startsWith("_posts/_templates/")
+  !f.path.startsWith("_templates/")
 );
 const tagSet = new Set();
 for (const f of postFiles) {
