@@ -3,6 +3,7 @@ layout: default
 title: First Blog Post
 description: "testing out the formatter."
 date: 2026-08-04 11:30:00
+tags: [meta, testing]
 ---
 # Testing out Blog Post (Title)
 ## Title 2

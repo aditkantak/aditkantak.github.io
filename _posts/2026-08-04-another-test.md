@@ -4,6 +4,7 @@ title: another test
 description: testing out datetime and other misc things
 date: 2026-08-04 15:46:44
 math: true
+tags: [math, testing]
 ---
 hey guys, here's a bit of math because i want to test scrollable latex
 

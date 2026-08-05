@@ -4,6 +4,7 @@ title: Testing out math mode
 description: Trying out math mode for my blog!!!!
 date: 2026-08-04 14:15:00
 math: true
+tags: [math, testing]
 ---
 GRPO Objective:
 
