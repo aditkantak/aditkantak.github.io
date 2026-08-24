@@ -38,7 +38,8 @@
     </div>
 
     <main{% if page.url == "/blog.html" %} class="blog-index"{% endif %}>
-        {{ content | replace: "_blog_assets/", "/assets/blog/" }}
+        {% assign blog_asset_url = "/assets/blog/" | relative_url %}
+        {{ content | replace: "_blog_assets/", blog_asset_url }}
     </main>
 
     <footer class="centered">

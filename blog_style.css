@@ -419,8 +419,13 @@ main a:focus-visible,
 }
 
 @media (max-aspect-ratio: 3/4) {
+    /* max-width: 100% (rather than a hard px cap) lets narrow phones use
+       their full width instead of sitting at a fixed desktop-derived size,
+       but 100% flush against the viewport puts text right up against the
+       screen edges - pull it in via calc() so the existing margin: auto
+       centering still has room to add a gutter on each side. */
     main {
-        max-width: 100%;
+        max-width: calc(100% - 40px);
     }
 
     main div.highlighter-rouge code {

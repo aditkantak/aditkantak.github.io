@@ -4,4 +4,5 @@ _site/
 _posts/_templates/
 _posts/_blog_assets/
 publish_blog
+deploy_ics
 .DS_Store
