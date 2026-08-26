@@ -33,7 +33,7 @@ img_data = [
         "subject": "Waves at Hidden Beach",
         "location": "Point Lobos State Natural Reserve, CA",
         "filepath": "./assets/gallery/hidden_beach.JPG",
-        "device": "Nikon Coolpix S52000"
+        "device": "Nikon Coolpix S5200"
     },
     {
         "subject": "Emerald Bay Through A Polarized Lens",
