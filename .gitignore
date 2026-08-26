@@ -6,3 +6,4 @@ _posts/_blog_assets/
 publish_blog
 deploy_ics
 .DS_Store
+_site_ics
