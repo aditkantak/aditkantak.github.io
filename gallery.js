@@ -30,6 +30,12 @@ img_data = [
         "device": "Apple iPhone 15 Pro"
     },
     {
+        "subject": "Waves at Hidden Beach",
+        "location": "Point Lobos State Natural Reserve, CA",
+        "filepath": "./assets/gallery/hidden_beach.JPG",
+        "device": "Nikon Coolpix S52000"
+    },
+    {
         "subject": "Emerald Bay Through A Polarized Lens",
         "location": "Lake Tahoe, CA",
         "filepath": "./assets/gallery/emerald_bay.jpeg",
